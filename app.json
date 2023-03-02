@@ -1,0 +1,132 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.homey.gotify",
+  "version": "1.1.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#66c7ed",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Gotify client"
+  },
+  "description": {
+    "en": "Gotify client to send notifications to your gotify server"
+  },
+  "category": [
+    "appliances"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Maxime Salecroix",
+    "email": "maxime.salecroix@gmail.com"
+  },
+  "flow": {
+    "actions": [
+      {
+        "title": {
+          "en": "Send Message"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=app"
+          },
+          {
+            "type": "text",
+            "name": "title",
+            "placeholder": {
+              "en": "Homey"
+            }
+          },
+          {
+            "type": "text",
+            "name": "message",
+            "placeholder": {
+              "en": "Enter your message content here"
+            }
+          },
+          {
+            "type": "number",
+            "name": "priority",
+            "placeholder": {
+              "en": "5"
+            },
+            "min": 0,
+            "max": 10,
+            "step": 1
+          }
+        ],
+        "id": "send-message"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "App"
+      },
+      "class": "other",
+      "capabilities": [],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/app/assets/images/small.png",
+        "large": "/drivers/app/assets/images/large.png",
+        "xlarge": "/drivers/app/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "app_settings"
+        }
+      ],
+      "id": "app",
+      "settings": [
+        {
+          "id": "name",
+          "type": "text",
+          "label": {
+            "en": "Device name"
+          },
+          "value": "Gotify app",
+          "hint": {
+            "en": "Custom name for your gotify app"
+          }
+        },
+        {
+          "id": "url",
+          "type": "text",
+          "label": {
+            "en": "Gotify URL"
+          },
+          "value": "http://192.168.x.x",
+          "hint": {
+            "en": "Gotify server URL on your network"
+          }
+        },
+        {
+          "id": "token",
+          "type": "password",
+          "label": {
+            "en": "Apps token"
+          },
+          "value": "Secret",
+          "hint": {
+            "en": "Token value from gotify"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<fieldset class="homey-form-fieldset">
+    <div class="homey-form-group">
+        <label class="homey-form-label" for="gotifyAppName" data-i18n="pair.gotifyAppName"></label>
+        <input class="homey-form-input" id="gotifyAppName" type="text" value=""/>
+    </div>
+    <div class="homey-form-group">
+        <label class="homey-form-label" for="gotifyServerUrl" data-i18n="pair.gotifyServerUrl"></label>
+        <input class="homey-form-input" id="gotifyServerUrl" type="text" value="" />
+        <label class="homey-form-label" id="gotifyServerUrlResult"> </label>
+    </div>
+    <div class="homey-form-group">
+        <label class="homey-form-label" for="gotifyAppToken" data-i18n="pair.gotifyAppToken"></label>
+        <input class="homey-form-input" id="gotifyAppToken" type="password" value="" >
+    </div>
+</fieldset>
+<button id="add" class="homey-button-primary-full">Add device</button>
+
+<script type="application/javascript">
+
+    Homey.setTitle(Homey.__("pair.title"));
+
+    var addElement = document.getElementById("add");
+    addElement.addEventListener("click", function (e) {
+        Homey.createDevice({
+            name: document.getElementById('gotifyAppName').value.replace(" ", "-"),
+            data: {
+                id: '"gapps-' + document.getElementById('gotifyAppName').value + '"',
+            },
+            store: {
+                name:   document.getElementById('gotifyAppName').value,
+                url:    document.getElementById('gotifyServerUrl').value,
+                token:  document.getElementById('gotifyAppToken').value
+            },
+            settings: {
+                name:   document.getElementById('gotifyAppName').value,
+                url:    document.getElementById('gotifyServerUrl').value,
+                token:  document.getElementById('gotifyAppToken').value
+            }
+        })
+        .then(function (result) {
+            Homey.done();
+        })
+        .catch(function (error) {
+            Homey.alert(error);
+        });
+    });
+</script>

@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "Send Message"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=app"
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "placeholder": {
+        "en": "Homey"
+      }
+    },
+    {
+      "type": "text",
+      "name": "message",
+      "placeholder": {
+        "en": "Enter your message content here"
+      }
+    },
+    {
+      "type": "number",
+      "name": "priority",
+      "placeholder": {
+        "en": "5"
+      },
+      "min": 0,
+      "max": 10,
+      "step": 1
+    }
+  ]
+}

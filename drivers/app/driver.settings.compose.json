@@ -1,0 +1,23 @@
+[
+    {
+        "id": "name",
+        "type": "text",
+        "label": { "en": "Device name" },
+        "value": "Gotify app",
+        "hint": { "en": "Custom name for your gotify app" }
+    },
+    {
+        "id": "url",
+        "type": "text",
+        "label": { "en": "Gotify URL" },
+        "value": "http://192.168.x.x",
+        "hint": { "en": "Gotify server URL on your network" }
+    },
+    {
+        "id": "token",
+        "type": "password",
+        "label": { "en": "Apps token" },
+        "value": "Secret",
+        "hint": { "en": "Token value from gotify" }
+    }
+  ]
