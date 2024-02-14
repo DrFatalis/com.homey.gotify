@@ -4,5 +4,8 @@
   },
   "1.1.0": {
     "en": "Added device as Gotify App. Each device can connect to gotify using its own token allowing a notification channel per device. Eg. One device sent indoor notification, another one outdoor notification to better organize received notifications"
+  },
+  "1.2.0": {
+    "en": "Additionnal configuration description when pairing a gotify app"
   }
 }

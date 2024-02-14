@@ -5,7 +5,7 @@
   "pair": {
     "title": "Gotify App Settings",
     "description": "Please configure the application",
-    "gotifyServerUrl": "Gotify server URL",
+    "gotifyServerUrl": "Gotify server URL (eg. http://xxx.xxx.xxx.xxx:yyyy)",
     "gotifyAppToken": "Application token",
     "gotifyAppName": "Application name"
   }

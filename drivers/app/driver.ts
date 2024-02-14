@@ -2,13 +2,13 @@ import Homey from 'homey';
 import axios from 'axios';
 import { PairSession } from 'homey/lib/Driver';
 
-class Driver extends Homey.Driver {
+class AppDriver extends Homey.Driver {
 
   /**
    * onInit is called when the driver is initialized.
    */
   async onInit() {
-    this.log('MyDriver has been initialized');
+    this.log('AppDriver has been initialized');
 
     const cardActionSendMessage = this.homey.flow.getActionCard('send-message');
     cardActionSendMessage.registerRunListener(async(args) => {
@@ -53,26 +53,6 @@ class Driver extends Homey.Driver {
       console.log("View: " + viewId);
     });
   }
-
-  /**
-   * onPairListDevices is called when a user is adding a device and the 'list_devices' view is called.
-   * This should return an array with the data of devices that are available for pairing.
-   */
-  /*async onPairListDevices(session: PairSession) {
-    return [
-      {
-        name: 'Homey',
-        data: {
-          id: 'gapps-homey',
-        },
-        store: {
-          url: 'https://gotify.servmsx.my-hlabs.com',
-          token: 'A4-yBKDRICFTMCM',
-        },
-      },
-    ];
-  }*/
-
 }
 
-module.exports = Driver;
+module.exports = AppDriver;

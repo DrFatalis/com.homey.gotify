@@ -11,7 +11,7 @@
         "type": "text",
         "label": { "en": "Gotify URL" },
         "value": "http://192.168.x.x",
-        "hint": { "en": "Gotify server URL on your network" }
+        "hint": { "en": "Gotify server URL on your network (eg. http://xxx.xxx.xxx.xxx:yyyy)" }
     },
     {
         "id": "token",

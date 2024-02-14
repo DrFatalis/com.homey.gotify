@@ -1,21 +1,23 @@
+import Axios, { AxiosInstance } from 'axios';
 import Homey from 'homey';
-import axios from 'axios';
 import https from 'https';
-import { clear } from 'console';
 
-class Device extends Homey.Device {
+class AppDevice extends Homey.Device {
+
+  settings: any;
+  axiosInstance: AxiosInstance =  Axios.create({
+                                    httpsAgent: new https.Agent({  
+                                        rejectUnauthorized: false
+                                    })
+                                  });
 
   /**
    * onInit is called when the device is initialized.
    */
   async onInit() {
-    const settings = this.getSettings();
-    let AxiosInstance = axios.create({
-        httpsAgent: new https.Agent({  
-            rejectUnauthorized: false
-        })
-    });
-    this.log(settings.name + ' has been initialized');
+    this.settings = this.getSettings();
+    
+    this.log(this.settings.name + ' has been initialized');
     
     let device_urlNotValid: boolean = true;
     let device_unavailable: boolean = false;
@@ -33,7 +35,7 @@ class Device extends Homey.Device {
         }
       }
       if(!device_urlNotValid){
-        let promise = await AxiosInstance({
+        let promise = await this.axiosInstance({
                               method: "get",
                               url: await this.getServerUrl(),
                               data: "",
@@ -97,15 +99,13 @@ class Device extends Homey.Device {
   }
 
   async getServerUrl(){
-    const settings = this.getSettings();
-    return settings.url;
+    return this.settings.url;
   }
 
   async getToken(){
-    const settings = this.getSettings();
-    return settings.token;
+    return this.settings.token;
   }
 
 }
 
-module.exports = Device;
+module.exports = AppDevice;
