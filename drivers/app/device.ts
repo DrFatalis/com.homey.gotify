@@ -19,7 +19,7 @@ class AppDevice extends Homey.Device {
     
     this.log(this.settings.name + ' has been initialized');
     
-    let device_urlNotValid: boolean = true;
+    let device_urlNotValid: boolean = false;
     let device_unavailable: boolean = false;
 
     let availability_interval = setInterval(async () => {
@@ -79,7 +79,8 @@ class AppDevice extends Homey.Device {
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
   async onSettings({ oldSettings: {}, newSettings: {}, changedKeys: [] }): Promise<string|void> {
-    this.log(this.getSettings().name + ' settings where changed');
+    this.log(this.getSettings().name + ' settings were changed');
+    this.settings = this.getSettings();
   }
 
   /**
@@ -89,6 +90,7 @@ class AppDevice extends Homey.Device {
    */
   async onRenamed(name: string) {
     this.log(this.getSettings().name + ' was renamed');
+    this.settings = this.getSettings();
   }
 
   /**
@@ -96,16 +98,16 @@ class AppDevice extends Homey.Device {
    */
   async onDeleted() {
     this.log(this.getSettings().name + ' has been deleted');
+    this.settings = this.getSettings();
   }
 
   async getServerUrl(){
-    return this.settings.url;
+    return this.getSettings().url;
   }
 
   async getToken(){
-    return this.settings.token;
+    return this.getSettings().token;
   }
-
 }
 
 module.exports = AppDevice;
